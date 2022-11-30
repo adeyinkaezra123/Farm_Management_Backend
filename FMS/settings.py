@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 from pathlib import Path
 import os
 from os import path, environ
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -21,7 +22,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-lyqm^d4p6c(mj-1ev!a%)uw12j4b(*_kyb1wp1_%@91c=4+_u0'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -44,6 +44,13 @@ INSTALLED_APPS = [
     'rest_framework',
     'core'
 ]
+
+
+
+# OR
+
+# Read secret key from a file
+
 # ALLOWED_HOSTS = ['.vercel.app', '.now.sh']
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 MIDDLEWARE = [
@@ -92,6 +99,7 @@ DATABASES = {
     }
 }
 
+DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -134,6 +142,7 @@ CORS_ALLOWED_ORIGIN_REGEXES = [
 r"^https://\w+\.domain\.com$",
 ]
 
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 CORS_ALLOW_METHODS = [
 'DELETE',
 'GET',
