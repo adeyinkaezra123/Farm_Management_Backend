@@ -98,7 +98,7 @@ DATABASES = {
         'PORT': '3306',
     }
 }
-
+ALLOWED_HOSTS = ['web-production-3640.up.railway.app', '127.0.0.1']
 DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
 # Password validation
