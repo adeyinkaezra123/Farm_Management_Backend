@@ -5,6 +5,7 @@ from .models import *
 
 
 
+
 class ListTodo(generics.ListAPIView):
     queryset = Todo.objects.all()
     serializer_class = ToDoSerializer
